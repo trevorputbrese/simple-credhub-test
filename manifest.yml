@@ -2,6 +2,6 @@
 applications:
   - name: simple-credhub-test
     buildpacks:
-      - python_buildpack
+      - nodejs_buildpack
     services:
       - credhub-test

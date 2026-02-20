@@ -1,0 +1,13 @@
+{
+  "name": "simple-credhub-test",
+  "version": "1.0.0",
+  "description": "Simple Node.js app to test CredHub with Tanzu Platform for Cloud Foundry",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cfenv": "^1.2.4",
+    "express": "^4.21.0"
+  }
+}

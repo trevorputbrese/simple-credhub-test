@@ -1,13 +1,13 @@
 # CredHub Test App
 
-A simple Python/Flask web app for testing CredHub integration with Tanzu Platform for Cloud Foundry. The app reads a CredHub secret from the `VCAP_SERVICES` environment variable and displays it on a splash page, validating that the secret was successfully bound and injected.
+A simple Node.js/Express web app for testing CredHub integration with Tanzu Platform for Cloud Foundry. The app uses the `cfenv` package to read a CredHub secret from the `VCAP_SERVICES` environment variable and displays it on a splash page, validating that the secret was successfully bound and injected.
 
 ## How It Works
 
 1. A CredHub service instance is created with a secret stored as JSON credentials.
 2. The service instance is bound to the app via the `manifest.yml`.
 3. When the app is pushed to Cloud Foundry, the platform injects the bound service credentials into the `VCAP_SERVICES` environment variable.
-4. The app parses `VCAP_SERVICES`, finds the `credhub-test` service instance, and displays the credentials on the root page.
+4. The app uses `cfenv` to parse `VCAP_SERVICES`, finds the `credhub-test` service instance, and displays the credentials on the root page.
 
 ## Prerequisites
 
@@ -45,8 +45,7 @@ The `manifest.yml` is preconfigured to bind the `credhub-test` service instance 
 
 | File | Description |
 |---|---|
-| `app.py` | Flask app that reads and displays CredHub credentials from `VCAP_SERVICES` |
+| `app.js` | Express app that uses `cfenv` to read and display CredHub credentials |
+| `package.json` | Node.js dependencies (Express, cfenv) |
 | `manifest.yml` | Cloud Foundry manifest binding the `credhub-test` service |
-| `Procfile` | Runs the app with Gunicorn |
-| `requirements.txt` | Python dependencies (Flask, Gunicorn) |
-| `runtime.txt` | Specifies Python 3.12 |
+| `Procfile` | Runs the app with Node.js |
