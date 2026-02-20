@@ -2,6 +2,18 @@
 
 A simple Python/Flask web app for testing CredHub integration with Tanzu Platform for Cloud Foundry. The app reads a CredHub secret from the `VCAP_SERVICES` environment variable and displays it on a splash page, validating that the secret was successfully bound and injected.
 
+## Branches
+
+This repo has three branches, each demonstrating a different approach to reading CredHub credentials:
+
+| Branch | Language | Approach |
+|---|---|---|
+| `main` | Python/Flask | Uses `os.environ.get()` and `json.loads()` to manually parse `VCAP_SERVICES` |
+| `python-with-cfenv` | Python/Flask | Uses the `cfenv` Python library for cleaner, more efficient credential retrieval |
+| `javascript-with-cfenv` | Node.js/Express | Uses the `cfenv` npm package for credential retrieval |
+
+The `cfenv` branches are recommended as they handle all the `VCAP_SERVICES` parsing and service lookup automatically, resulting in simpler and more maintainable code.
+
 ## How It Works
 
 1. A CredHub service instance is created with a secret stored as JSON credentials.
