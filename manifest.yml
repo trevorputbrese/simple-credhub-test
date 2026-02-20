@@ -1,7 +1,6 @@
 ---
 applications:
-  - name: credhub-test-app
-    memory: 128M
+  - name: simple-credhub-test
     buildpacks:
       - python_buildpack
     services:
